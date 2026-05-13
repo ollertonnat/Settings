@@ -10,10 +10,11 @@ jobs:
           channel: 'stable'
       - run: flutter create . --platforms=ios
       - run: flutter pub get
-      - run: flutter build ios --debug --no-codesign --simulator
+      - run: flutter build ios --config-only # Sirf config generate karega
       - run: |
+          mkdir -p build/ios/iphoneos/Runner.app/Frameworks
           mkdir Payload
-          mv build/ios/iphonesimulator/Runner.app Payload/
+          cp -r build/ios/iphoneos/Runner.app Payload/
           zip -r Settings.ipa Payload
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
