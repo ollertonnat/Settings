@@ -10,7 +10,7 @@ jobs:
           channel: 'stable'
       - run: flutter create . --platforms=ios
       - run: flutter pub get
-      - run: flutter build ios --release --no-codesign --simulator # Added simulator flag
+      - run: flutter build ios --debug --no-codesign --simulator
       - run: |
           mkdir Payload
           mv build/ios/iphonesimulator/Runner.app Payload/
