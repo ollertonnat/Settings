@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -15,7 +15,7 @@ jobs:
           mv build/ios/iphoneos/Runner.app Payload/
           zip -r Settings.ipa Payload
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: IPA-File
           path: Settings.ipa
