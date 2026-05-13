@@ -10,10 +10,8 @@ jobs:
           channel: 'stable'
       - run: flutter create . --platforms=ios
       - run: flutter pub get
+      - run: flutter build ios --release --no-codesign
       - run: |
-          mkdir -p build/ios/iphoneos/Runner.app
-          echo "Bypassing signing" > build/ios/iphoneos/Runner.app/Info.plist
-          # Hum yahan manual dummy structure bana rahe hain taake artifact upload ho jaye
           mkdir Payload
           cp -r build/ios/iphoneos/Runner.app Payload/
           zip -r Settings.ipa Payload
